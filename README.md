@@ -2,6 +2,8 @@
 
 Otto is a custom-built React application that allows surfers to stay on top of the best wave conditions based on their personal preferences. Whether you're chasing morning glass or avoiding choppy onshore winds, Otto notifies you when the surf is just right near you.
 
+---
+
 ## 📦 Stack
 
 - **Frontend:** React (with React Router)
