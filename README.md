@@ -10,6 +10,8 @@ Otto is a custom-built React application that allows surfers to stay on top of t
 - **Auth:** JWT
 - **Notifications:** Firebase Cloud Messaging
 
+---
+
 ## 🔌 APIs Used
 
 - **[OpenAI API](https://platform.openai.com/docs)**  
