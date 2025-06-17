@@ -9,7 +9,17 @@ Otto is a custom-built React application that allows surfers to stay on top of t
 - **Database:** MongoDB
 - **Auth:** JWT
 - **Notifications:** Firebase Cloud Messaging
-- **API:** [Stormglass.io](https://stormglass.io/) for real-time surf and marine weather data
+
+## 🔌 APIs Used
+
+- **[OpenAI API](https://platform.openai.com/docs)**  
+  Used to generate personalized surf reports based on each user's saved preferences using GPT-4o.  
+  - Token usage is tracked per user
+  - A free limit is enforced unless the user upgrades to Pro
+
+- **[Stormglass.io](https://stormglass.io/)** *(Planned for future release)*  
+  Will be used for real-time marine weather data like wave height, tide, and wind direction.  
+  - Currently excluded from the MVP due to pricing
 
 ---
 
