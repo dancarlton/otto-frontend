@@ -1,0 +1,81 @@
+.main {
+  background-color: #000;
+  align-items: center;
+  padding: 4rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main__title {
+  text-align: center;
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.main__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: none;
+}
+
+.main__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-color: #000;
+}
+
+/* Accent squiggles */
+.main__image-accent,
+.main__image-accent-rotated {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  z-index: 2;
+}
+
+.main__image-accent {
+  top: 0;
+  left: -1px;
+  width: 400px;
+  /* transform: translate(-10%, -10%); */
+}
+
+.main__image-accent-text {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  max-width: 300px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: white;
+  z-index: 3;
+}
+
+.main__image-accent-rotated {
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  transform: rotate(180deg);
+}
+
+.main__image-accent-text-rotated {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.5rem;
+  max-width: 300px;
+  font-size: 1.125rem;
+  color: white;
+  text-align: right;
+  z-index: 3;
+}
