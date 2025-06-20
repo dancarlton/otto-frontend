@@ -1,0 +1,10 @@
+.modal__submit {
+  margin-top: 0;
+  width: 86px;
+}
+
+
+
+.modal__login {
+  all: unset;
+}

@@ -1,0 +1,128 @@
+.modal {
+  display: flex;
+  position: fixed;
+  background-color: #0000004d;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  z-index: 2;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__content {
+  background-color: white;
+  position: relative;
+  padding: 40px 32px 36px;
+  max-width: 496px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.modal__close {
+  background-image: url("../../assets/close-button.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  background-color: transparent;
+  filter: none;
+  opacity: 1;
+}
+
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modal__title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 32px;
+  color: black;
+}
+
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-size: px;
+  color: #333;
+  border-bottom: 1px solid black;
+}
+
+.modal__label_type_radio {
+  margin-bottom: 8px;
+  border: none;
+}
+
+.modal__input {
+  display: block;
+  border: none;
+  margin-top: 8px;
+  padding: 0;
+}
+
+.modal__input:focus {
+  outline: none;
+}
+
+.modal__legend {
+  margin-bottom: 12px;
+  color: black;
+}
+
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  /* gap: 8px; */
+  color: gray;
+}
+
+.modal__radio-buttons:active {
+  color: black;
+}
+
+.modal__submit {
+  width: 100%;
+  height: 40px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modal__secondary-button {
+  color: gray;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  position: absolute;
+  bottom: 47px;
+  left: 150px;
+}
