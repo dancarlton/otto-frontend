@@ -45,6 +45,17 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
       onSubmit={handleSubmit}
       buttonText='Sign up'
     >
+      <label htmlFor='name' className='modal__label'>
+        Name*{' '}
+        <input
+          type='text'
+          className='modal__input'
+          id='name'
+          placeholder='Name'
+          value={name}
+          onChange={handleNameChange}
+        />
+      </label>
       <label htmlFor='email' className='modal__label'>
         Email*{' '}
         <input
@@ -67,31 +78,15 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
           onChange={handlePasswordChange}
         />
       </label>
-      <label htmlFor='name' className='modal__label'>
-        Name*{' '}
-        <input
-          type='text'
-          className='modal__input'
-          id='name'
-          placeholder='Name'
-          value={name}
-          onChange={handleNameChange}
-        />
-      </label>
-      <label htmlFor='imageUrl' className='modal__label'>
-        Avatar URL*{' '}
-        <input
-          type='text'
-          className='modal__input'
-          id='imageUrl'
-          placeholder='Avatar URL'
-          value={imageUrl}
-          onChange={handleImageUrlChange}
-        />
-      </label>
       <div className='modal__secondary-button'>
         <p>or</p>
-        <button type='button' className='modal__login' onClick={handleLoginClick}>Login</button>
+        <button
+          type='button'
+          className='modal__login'
+          onClick={handleLoginClick}
+        >
+          Login
+        </button>
       </div>
     </ModalWithForm>
   )

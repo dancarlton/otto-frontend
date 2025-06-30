@@ -28,7 +28,11 @@
   /* height: 28px; */
 }
 
-.header__nav {
+.header__search {
+  width: 50%;
+}
+
+/* .header__nav {
   display: flex;
   gap: 1.5rem;
   font-size: 1rem;
@@ -39,7 +43,7 @@
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
-}
+} */
 
 .header__nav a:hover {
   opacity: 0.75;
