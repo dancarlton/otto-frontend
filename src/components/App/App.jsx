@@ -6,7 +6,7 @@ import HomePage from '../../pages/HomePage'
 import { useState } from 'react'
 import LoginModal from '../LoginModal/LoginModal'
 import RegisterModal from '../RegisterModal/RegisterModal'
-// import OnboardingPage from "../../pages/OnboardingPage";
+import OnboardingPage from "../../pages/OnboardingPage";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
@@ -24,7 +24,7 @@ export default function App() {
       />
       <div className='page_content'>
         <Routes>
-          <Route
+          {/* <Route
             path='/'
             element={
               <HomePage
@@ -33,7 +33,8 @@ export default function App() {
                 onClose={closeActiveModal}
               />
             }
-          />
+          /> */}
+          <Route path="/" element={<OnboardingPage />} />
           {/* <Route path="/onboarding" element={<OnboardingPage />} /> */}
         </Routes>
       </div>

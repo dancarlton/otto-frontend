@@ -6,12 +6,10 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
 
   const handleNameChange = e => setName(e.target.value)
   const handleEmailChange = e => setEmail(e.target.value)
   const handlePasswordChange = e => setPassword(e.target.value)
-  const handleImageUrlChange = e => setImageUrl(e.target.value)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -20,7 +18,6 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
       name,
       email,
       password,
-      imageUrl,
     }
 
     onRegister(formData)
