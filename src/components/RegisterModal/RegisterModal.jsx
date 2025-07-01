@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import './RegisterModal.css'
+import { registerUser } from '../../utils/api'
 
 function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
   const [name, setName] = useState('')
@@ -20,13 +21,21 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
       password,
     }
 
-    onRegister(formData)
-      .then(() => {
-        setName('')
-        setEmail('')
-        setPassword('')
+    registerUser(formData)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token)
+          console.log('Registered successfully:', res.user)
+          onRegister(res.user)
 
-        onClose()
+          setName('')
+          setEmail('')
+          setPassword('')
+
+          onClose()
+        } else {
+          throw new Error('No token returned from server.')
+        }
       })
       .catch(err => {
         console.error('Error registering user:', err)
