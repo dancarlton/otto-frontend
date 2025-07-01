@@ -1,6 +1,6 @@
 # 🌊 Otto – Your Personalized Surf Reporter
 
-Otto is a custom-built React application that allows surfers to stay on top of the best wave conditions based on their personal preferences. Whether you're chasing morning glass or avoiding choppy onshore winds, Otto notifies you when the surf is just right near you.
+Otto is a custom-built React application that helps surfers stay dialed in to the best wave conditions based on their personal preferences. Whether you're chasing clean morning lines or dodging blown-out onshore chop, Otto alerts you when the surf is just right near your favorite breaks.
 
 ---
 
@@ -16,14 +16,13 @@ Otto is a custom-built React application that allows surfers to stay on top of t
 
 ## 🔌 APIs Used
 
-- **[OpenAI API](https://platform.openai.com/docs)**  
-  Used to generate personalized surf reports based on each user's saved preferences using GPT-4o.  
+- **[OpenAI API](https://platform.openai.com/docs)**
+  Used to generate personalized surf reports based on each user's saved preferences using GPT-4o.
   - Token usage is tracked per user
   - A free limit is enforced unless the user upgrades to Pro
 
-- **[Stormglass.io](https://stormglass.io/)** *(Planned for future release)*  
-  Will be used for real-time marine weather data like wave height, tide, and wind direction.  
-  - Currently excluded from the MVP due to pricing
+- **[National Data Buoy Center](https://www.ndbc.noaa.gov/)** *(Planned for future release)*
+  Will be used to ingest raw buoy data including swell, wind, and tide, matched to user-selected surf spots.
 
 ---
 
@@ -32,7 +31,7 @@ Otto is a custom-built React application that allows surfers to stay on top of t
 - 🌐 User registration and login (JWT)
 - 🌊 Surf preference setup (ideal wave height, wind, swell, tide, etc.)
 - 📍 Favorite surf spots by location
-- 📡 Real-time surf forecast using Stormglass API
+- 📡 Real-time buoy + forecast data analysis *(planned)*
 - 🔔 Push notifications when conditions match preferences
 - 🧠 Optional GPT integration for surf spot suggestions (coming soon)
 
