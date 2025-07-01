@@ -1,5 +1,5 @@
 // App.jsx
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import HomePage from '../../pages/HomePage'
@@ -10,22 +10,28 @@ import OnboardingPage from "../../pages/OnboardingPage";
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
+  const location = useLocation()
 
   const openLoginModal = () => setActiveModal('login')
   const openRegisterModal = () => setActiveModal('register')
   const closeActiveModal = () => setActiveModal('')
 
+  const isOnboarding = location.pathname === '/onboarding'
+
   return (
     <div className='page'>
-      <Header
-        onLoginClick={openLoginModal}
-        onRegisterClick={openRegisterModal}
-        onClose={closeActiveModal}
-      />
+      {!isOnboarding && (
+        <Header
+          onLoginClick={openLoginModal}
+          onRegisterClick={openRegisterModal}
+          onClose={closeActiveModal}
+        />
+      )}
+
       <div className='page_content'>
         <Routes>
-          {/* <Route
-            path='/'
+          <Route
+            path="/"
             element={
               <HomePage
                 onLoginClick={openLoginModal}
@@ -33,12 +39,12 @@ export default function App() {
                 onClose={closeActiveModal}
               />
             }
-          /> */}
-          <Route path="/" element={<OnboardingPage />} />
-          {/* <Route path="/onboarding" element={<OnboardingPage />} /> */}
+          />
+          <Route path="/onboarding" element={<OnboardingPage />} />
         </Routes>
       </div>
-      <Footer />
+
+      {!isOnboarding && <Footer />}
 
       <LoginModal isOpen={activeModal === 'login'} onClose={closeActiveModal} />
       <RegisterModal

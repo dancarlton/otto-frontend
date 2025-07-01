@@ -1,72 +1,124 @@
-import "../Onboarding/Onboarding.css";
+import React, { useState, useEffect } from 'react'
+import '../Onboarding/Onboarding.css'
 
 export default function Step3({ formData, updateForm, next, prev }) {
-  const boardTypes = ["Shortboard", "Longboard", "Fish", "Funboard", "Just my body"];
-  const wetsuits = ["Nope", "Spring Suit", "Full Suit (3/2mm)", "Full Suit (4/3mm +)", "Literally no clue"];
-  const fins = ["Thruster (3 fins)", "Quad (4 fins)", "Single Fin", "Just the ones for my feet"];
+  const [selectedBoards, setSelectedBoards] = useState(
+    formData.gear.board || []
+  )
+  const [selectedWetsuits, setSelectedWetsuits] = useState(
+    formData.gear.wetsuits || []
+  )
+  const [selectedFins, setSelectedFins] = useState(formData.gear.fins || [])
+  const [canContinue, setCanContinue] = useState(false)
 
-  const toggle = (key, value) => {
-    const current = formData[key] || [];
+  const board = [
+    'Shortboard',
+    'Longboard',
+    'Fish',
+    'Funboard',
+    'Just my body',
+  ]
+  const wetsuits = [
+    'Nope',
+    'Spring Suit',
+    'Full Suit (3/2mm)',
+    'Full Suit (4/3mm+)',
+    'Literally no clue',
+  ]
+  const fins = [
+    'Single Fin',
+    'Twin Fin',
+    'Thruster (3 fins)',
+    'Quad (4 fins)',
+    'Just the ones for my feet',
+  ]
+
+  const toggle = (type, value, setFn, current) => {
     const updated = current.includes(value)
-      ? current.filter((v) => v !== value)
-      : [...current, value];
-    updateForm({ [key]: updated });
-  };
+      ? current.filter(v => v !== value)
+      : [...current, value]
+    setFn(updated)
+    updateForm({
+      gear: {
+        ...formData.gear,
+        [type]: updated,
+      },
+    })
+  }
+
+  useEffect(() => {
+    const isComplete =
+      selectedBoards.length > 0 &&
+      selectedWetsuits.length > 0 &&
+      selectedFins.length > 0
+    setCanContinue(isComplete)
+  }, [selectedBoards, selectedWetsuits, selectedFins])
 
   return (
-    <div className="onboarding-step">
-      <h2 className="onboarding-title">Surf Gear<br /><small>(check all that apply)</small></h2>
+    <div className='onboarding__step'>
+      <h2 className='onboarding__title'>Surf Gear</h2>
+      <p className='onboarding__subtext'>Check all that apply:</p>
 
-      <div className="checkbox-group">
+      <div className='onboarding__checkbox-group'>
         <p>What type of board do you use?</p>
-        {boardTypes.map((type) => (
-          <label key={type} className="checkbox-label">
+        {board.map(type => (
+          <label key={type} className='onboarding__checkbox-label'>
             <input
-              type="checkbox"
-              checked={formData.boardTypes?.includes(type)}
-              onChange={() => toggle("boardTypes", type)}
+              type='checkbox'
+              checked={selectedBoards.includes(type)}
+              onChange={() =>
+                toggle('board', type, setSelectedBoards, selectedBoards)
+              }
             />
             {type}
           </label>
         ))}
       </div>
 
-      <div className="checkbox-group">
+      <div className='onboarding__checkbox-group'>
         <p>What type of wetsuit do you own?</p>
-        {wetsuits.map((type) => (
-          <label key={type} className="checkbox-label">
+        {wetsuits.map(type => (
+          <label key={type} className='onboarding__checkbox-label'>
             <input
-              type="checkbox"
-              checked={formData.wetsuits?.includes(type)}
-              onChange={() => toggle("wetsuits", type)}
+              type='checkbox'
+              checked={selectedWetsuits.includes(type)}
+              onChange={() =>
+                toggle('wetsuits', type, setSelectedWetsuits, selectedWetsuits)
+              }
             />
             {type}
           </label>
         ))}
       </div>
 
-      <div className="checkbox-group">
+      <div className='onboarding__checkbox-group'>
         <p>What kind of fins do you have?</p>
-        {fins.map((type) => (
-          <label key={type} className="checkbox-label">
+        {fins.map(type => (
+          <label key={type} className='onboarding__checkbox-label'>
             <input
-              type="checkbox"
-              checked={formData.fins?.includes(type)}
-              onChange={() => toggle("fins", type)}
+              type='checkbox'
+              checked={selectedFins.includes(type)}
+              onChange={() =>
+                toggle('fins', type, setSelectedFins, selectedFins)
+              }
             />
             {type}
           </label>
         ))}
       </div>
 
-      <div className='nav-wrapper'>
-        <button className='nav-button nav-left' onClick={prev}>
+      <div className='onboarding__nav-wrapper'>
+        <button className='onboarding__nav-button onboarding__nav-button--left' onClick={prev}>
           ←
         </button>
-        <button className='nav-button nav-right' onClick={next}>
+        <button
+          className='onboarding__nav-button onboarding__nav-button--right'
+          onClick={next}
+          disabled={!canContinue}
+        >
           →
         </button>
       </div>
     </div>
-  );
+  )
 }
