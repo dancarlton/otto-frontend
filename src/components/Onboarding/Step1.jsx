@@ -1,33 +1,44 @@
+import { useEffect, useState } from 'react'
 import '../Onboarding/Onboarding.css'
 
 export default function Step1({ formData, updateForm, next }) {
   const levels = ['Beginner', 'Intermediate', 'Advanced', 'Grom mentality']
+  const [selected, setSelected] = useState(formData.shredderLevel?.[0] || '')
+// shredderLevel?.[0] is whats called Optional Chaining, which means its safely grabbing the first item in the array([0]), but only if formData.shredderLevel exists. if it doesn't exist (as in no level has been selected yet), it returnes undefined instead of breaking the app
 
-  const toggle = level => {
-    const updated = formData.shredderLevel?.includes(level)
-      ? formData.shredderLevel.filter(l => l !== level)
-      : [...(formData.shredderLevel || []), level]
-    updateForm({ shredderLevel: updated })
+  const [canContinue, setCanContinue] = useState(false)
+
+  const handleSelect = level => {
+    const updated = selected === level ? '' : level
+    setSelected(updated)
+    updateForm({ shredderLevel: updated ? [updated] : [] })
   }
 
+  useEffect(() => {
+    setCanContinue(!!selected)
+  }, [selected])
+
   return (
-    <div className='onboarding-step'>
-      <h2 className='onboarding-title'>What level of shredder are you?</h2>
-      <div className='checkbox-group'>
+    <div className='onboarding__step'>
+      <h2 className='onboarding__title'>What level of shredder are you?</h2>
+      <div className='onboarding__checkbox-group'>
         {levels.map(level => (
-          <label key={level} className='checkbox-label'>
+          <label key={level} className='onboarding__checkbox-label'>
             <input
               type='checkbox'
               checked={formData.shredderLevel?.includes(level)}
-              onChange={() => toggle(level)}
+              onChange={() => handleSelect(level)}
             />
             {level}
           </label>
         ))}
       </div>
-      <div className='nav-wrapper'>
-
-        <button className='nav-button nav-right' onClick={next}>
+      <div className='onboarding__nav-wrapper'>
+        <button
+          className='onboarding__nav-button onboarding__nav-button--right'
+          onClick={next}
+          disabled={!canContinue}
+        >
           →
         </button>
       </div>

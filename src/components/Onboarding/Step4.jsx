@@ -2,7 +2,6 @@ import "../Onboarding/Onboarding.css";
 
 export default function Step4({ formData, updateForm, next, prev }) {
   const surfSpots = ["Malibu (USA)", "Gold Coast (Australia)", "Uluwatu (Bali)", "Trestles (CA)"];
-  const notifications = ["Yes", "No", "Maybe so"];
 
   const toggle = (key, value) => {
     const current = formData[key] || [];
@@ -13,12 +12,12 @@ export default function Step4({ formData, updateForm, next, prev }) {
   };
 
   return (
-    <div className="onboarding-step">
-      <h2 className="onboarding-title">Favorite Surf Spots</h2>
-      <p className="onboarding-subtext">Search or select your favorites:</p>
-      <div className="checkbox-group">
+    <div className="onboarding__step">
+      <h2 className="onboarding__title">Favorite Surf Spots</h2>
+      <p className="onboarding__subtext">Search or select your favorites:</p>
+      <div className="onboarding__checkbox-group">
         {surfSpots.map((spot) => (
-          <label key={spot}>
+          <label className="onboarding__checkbox-label" key={spot}>
             <input
               type="checkbox"
               checked={formData.spots?.includes(spot)}
@@ -29,26 +28,12 @@ export default function Step4({ formData, updateForm, next, prev }) {
         ))}
       </div>
 
-      <h3 className="onboarding-title">Notifications</h3>
-      <p className="onboarding-subtext">Get notified when conditions match?</p>
-      <div className="checkbox-group">
-        {notifications.map((opt) => (
-          <label key={opt}>
-            <input
-              type="checkbox"
-              checked={formData.notifications?.includes(opt)}
-              onChange={() => toggle("notifications", opt)}
-            />
-            {opt}
-          </label>
-        ))}
-      </div>
 
-      <div className='nav-wrapper'>
-        <button className='nav-button nav-left' onClick={prev}>
+      <div className='onboarding__nav-wrapper'>
+        <button className='onboarding__nav-button onboarding__nav-button--left' onClick={prev}>
           ←
         </button>
-        <button className='nav-button nav-right' onClick={next}>
+        <button className='onboarding__nav-button onboarding__nav-button--right' onClick={next}>
           →
         </button>
       </div>

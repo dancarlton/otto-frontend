@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Step2({ formData, updateForm, next, back }) {
+export default function Step2({ formData, updateForm, next, prev }) {
   const [selected, setSelected] = useState(formData.waveHeight || []);
   const [canContinue, setCanContinue] = useState(false);
 
@@ -18,13 +18,13 @@ export default function Step2({ formData, updateForm, next, back }) {
   }, [selected]);
 
   return (
-    <div className="onboarding-step">
-      <h2 className="onboarding-title">What wave height do you prefer?</h2>
-      <p className="onboarding-subtext">Check all that apply:</p>
+    <div className="onboarding__step">
+      <h2 className="onboarding__title">What wave height do you prefer?</h2>
+      <p className="onboarding__subtext">Check all that apply:</p>
 
-      <div className="checkbox-group">
-        {["0-2 ft", "2-4 ft", "4-6 ft", "Overhead"].map((option) => (
-          <label key={option} className="checkbox-label">
+      <div className="onboarding__checkbox-group">
+        {["1-2 ft", "2-4 ft", "4-6 ft", "6+"].map((option) => (
+          <label key={option} className="onboarding__checkbox-label">
             <input
               type="checkbox"
               checked={selected.includes(option)}
@@ -35,12 +35,12 @@ export default function Step2({ formData, updateForm, next, back }) {
         ))}
       </div>
 
-      <div className="nav-wrapper">
-        <button className="nav-button nav-left" onClick={back}>
+      <div className="onboarding__nav-wrapper">
+        <button className="onboarding__nav-button onboarding__nav-button--left" onClick={prev}>
           ←
         </button>
         <button
-          className="nav-button nav-right"
+          className="onboarding__nav-button onboarding__nav-button--right"
           onClick={next}
           disabled={!canContinue}
         >
