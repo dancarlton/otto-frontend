@@ -1,8 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import { updateUser } from '../../utils/api'
 import '../Onboarding/Onboarding.css'
+import { useContext } from 'react'
+import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
 export default function Step6({ formData, prev }) {
+  const {userData} = useContext(CurrentUserContext)
   const navigate = useNavigate()
 
   const handleSubmit = async e => {
@@ -11,8 +14,8 @@ export default function Step6({ formData, prev }) {
 
     try {
       const updatedUser = await updateUser(token, {preferences: formData})
-      console.log('Preferences submitted successfully:', updatedUser)
-      console.log('Submitted formData:', formData)
+      console.log('Updated user:', updatedUser.name)
+      console.log('With preferences:', formData)
       navigate('/')
     } catch (error) {
       console.error('Failed to submit preferences:', error.message)

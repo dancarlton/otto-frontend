@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Step1 from '../components/Onboarding/Step1'
 import Step2 from '../components/Onboarding/Step2'
 import Step3 from '../components/Onboarding/Step3'
@@ -18,7 +18,7 @@ export default function OnboardingPage() {
     shredderLevel: [],
     waveHeight: [],
     gear: {
-      board: [],
+      boards: [],
       wetsuits: [],
       fins: [],
     },
