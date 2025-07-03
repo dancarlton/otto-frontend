@@ -4,16 +4,15 @@ import '../Onboarding/Onboarding.css'
 
 export default function Step6({ formData, prev }) {
   const navigate = useNavigate()
-  // const handleSubmit = () => {
-  //   console.log('Finished onboarding:', formData)
-  // }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('jwt')
 
     try {
-      await updateUser(token, formData)
+      const updatedUser = await updateUser(token, {preferences: formData})
+      console.log('Preferences submitted successfully:', updatedUser)
+      console.log('Submitted formData:', formData)
       navigate('/')
     } catch (error) {
       console.error('Failed to submit preferences:', error.message)
@@ -21,8 +20,6 @@ export default function Step6({ formData, prev }) {
       navigate('/')
     }
   }
-
-
 
   return (
     <div className='onboarding__step'>
@@ -33,7 +30,10 @@ export default function Step6({ formData, prev }) {
 
       {/* Navigation Buttons */}
       <div className='onboarding__nav-wrapper'>
-        <button className='onboarding__nav-button onboarding__nav-button--left' onClick={prev}>
+        <button
+          className='onboarding__nav-button onboarding__nav-button--left'
+          onClick={prev}
+        >
           ←
         </button>
       </div>
