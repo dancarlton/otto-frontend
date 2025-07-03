@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import '../Onboarding/Onboarding.css'
 
 export default function Step3({ formData, updateForm, next, prev }) {
@@ -11,7 +11,7 @@ export default function Step3({ formData, updateForm, next, prev }) {
   const [selectedFins, setSelectedFins] = useState(formData.gear.fins || [])
   const [canContinue, setCanContinue] = useState(false)
 
-  const board = [
+  const boards = [
     'Shortboard',
     'Longboard',
     'Fish',
@@ -23,7 +23,7 @@ export default function Step3({ formData, updateForm, next, prev }) {
     'Spring Suit',
     'Full Suit (3/2mm)',
     'Full Suit (4/3mm+)',
-    'Literally no clue',
+    'Boardies & Bikinis',
   ]
   const fins = [
     'Single Fin',
@@ -61,13 +61,13 @@ export default function Step3({ formData, updateForm, next, prev }) {
 
       <div className='onboarding__checkbox-group'>
         <p>What type of board do you use?</p>
-        {board.map(type => (
+        {boards.map(type => (
           <label key={type} className='onboarding__checkbox-label'>
             <input
               type='checkbox'
               checked={selectedBoards.includes(type)}
               onChange={() =>
-                toggle('board', type, setSelectedBoards, selectedBoards)
+                toggle('boards', type, setSelectedBoards, selectedBoards)
               }
             />
             {type}

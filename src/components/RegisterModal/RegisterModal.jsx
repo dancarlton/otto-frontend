@@ -15,6 +15,7 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
         setEmail('')
         setPassword('')
         onClose()
+        console.log('Successfully Registered User:', { name, email })
       })
       .catch(err => {
         console.error('Error registering user:', err)
