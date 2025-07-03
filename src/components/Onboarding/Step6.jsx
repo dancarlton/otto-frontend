@@ -1,29 +1,28 @@
+import { useNavigate } from 'react-router-dom'
+import { updateUser } from '../../utils/api'
 import '../Onboarding/Onboarding.css'
 
 export default function Step6({ formData, prev }) {
-  const handleSubmit = () => {
-    console.log('Finished onboarding:', formData)
+  const navigate = useNavigate()
+  // const handleSubmit = () => {
+  //   console.log('Finished onboarding:', formData)
+  // }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const token = localStorage.getItem('token')
+
+    try {
+      await updateUser(token, formData)
+      navigate('/')
+    } catch (error) {
+      console.error('Failed to submit preferences:', error.message)
+      alert('Failed to submit preferences, please try again later')
+      navigate('/')
+    }
   }
 
-  //   const handleSubmit = async () => {
-  //     try {
-  //       const response = await fetch('/api/onboarding', {
-  //         method: 'POST',
-  //         headers: { 'Content-Type': 'application/json' },
-  //         body: JSON.stringify(formData),
-  //       })
 
-  //       if (response.ok) {
-  //         alert("You're all set! Welcome to Otto 🏄‍♂️")
-  //         // Redirect or finish onboarding here
-  //       } else {
-  //         alert('Something went wrong. Try again.')
-  //       }
-  //     } catch (error) {
-  //       console.error('Submit error:', error)
-  //       alert('Error submitting data.')
-  //     }
-  //   }
 
   return (
     <div className='onboarding__step'>

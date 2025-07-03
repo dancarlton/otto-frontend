@@ -1,5 +1,5 @@
 // App.jsx
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import HomePage from '../../pages/HomePage'
@@ -11,6 +11,7 @@ import OnboardingPage from "../../pages/OnboardingPage";
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
   const location = useLocation()
+  const navigate = useNavigate()
 
   const openLoginModal = () => setActiveModal('login')
   const openRegisterModal = () => setActiveModal('register')
@@ -50,6 +51,10 @@ export default function App() {
       <RegisterModal
         isOpen={activeModal === 'register'}
         onClose={closeActiveModal}
+        onRegister={(user) => {
+          console.log('New user registered:', user)
+          navigate('/onboarding')
+        }}
       />
     </div>
   )

@@ -20,6 +20,7 @@ export default function Step1({ formData, updateForm, next }) {
 
   return (
     <div className='onboarding__step'>
+      <h1 className="onboarding__welcome">Fill out the following so Otto can scout waves just for you!</h1>
       <h2 className='onboarding__title'>What level of shredder are you?</h2>
       <div className='onboarding__checkbox-group'>
         {levels.map(level => (

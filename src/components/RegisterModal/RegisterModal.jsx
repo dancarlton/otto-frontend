@@ -15,13 +15,7 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
   const handleSubmit = e => {
     e.preventDefault()
 
-    const formData = {
-      name,
-      email,
-      password,
-    }
-
-    registerUser(formData)
+    registerUser(name, email, password)
       .then((res) => {
         if (res.token) {
           localStorage.setItem('jwt', res.token)
