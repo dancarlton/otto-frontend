@@ -3,7 +3,7 @@ import '../Onboarding/Onboarding.css'
 
 export default function Step3({ formData, updateForm, next, prev }) {
   const [selectedBoards, setSelectedBoards] = useState(
-    formData.gear.board || []
+    formData.gear.boards || []
   )
   const [selectedWetsuits, setSelectedWetsuits] = useState(
     formData.gear.wetsuits || []

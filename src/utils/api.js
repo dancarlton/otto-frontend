@@ -17,14 +17,14 @@ export async function registerUser(name, email, password) {
   return await response.json() // returns { user, token }
 }
 
-export async function updateUser(token, name, email, password, preferences) {
-  const response = await fetch(`${baseUrl}/users`, {
+export async function updateUser(token, userData) {
+  const response = await fetch(`${baseUrl}/users/update`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, email, password, preferences }),
+    body: JSON.stringify( userData ),
   })
   if (!response.ok) {
     const error = await response.json()
