@@ -1,39 +1,24 @@
 import { useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import './RegisterModal.css'
-import { registerUser } from '../../utils/api'
 
 function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleNameChange = e => setName(e.target.value)
-  const handleEmailChange = e => setEmail(e.target.value)
-  const handlePasswordChange = e => setPassword(e.target.value)
-
   const handleSubmit = e => {
     e.preventDefault()
-
-    registerUser(name, email, password)
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem('jwt', res.token)
-          console.log('Registered successfully:', res.user)
-          onRegister(res.user)
-
-          setName('')
-          setEmail('')
-          setPassword('')
-
-          onClose()
-        } else {
-          throw new Error('No token returned from server.')
-        }
+    onRegister({ name, email, password })
+      .then(() => {
+        setName('')
+        setEmail('')
+        setPassword('')
+        onClose()
       })
       .catch(err => {
         console.error('Error registering user:', err)
-        alert('Could not add user!')
+        alert('Could not register!')
       })
   }
 
@@ -50,10 +35,10 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
         <input
           type='text'
           className='modal__input'
-          id='name'
+          id='register-name'
           placeholder='Name'
           value={name}
-          onChange={handleNameChange}
+          onChange={e => setName(e.target.value)}
         />
       </label>
       <label htmlFor='email' className='modal__label'>
@@ -61,21 +46,21 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
         <input
           type='email'
           className='modal__input'
-          id='email'
+          id='register-email'
           placeholder='Email'
           value={email}
-          onChange={handleEmailChange}
+          onChange={e => setEmail(e.target.value)}
         />
       </label>
       <label htmlFor='password' className='modal__label'>
         Password*{' '}
         <input
-          type='text'
+          type='password'
           className='modal__input'
-          id='passwrod'
+          id='register-password'
           placeholder='Password'
           value={password}
-          onChange={handlePasswordChange}
+          onChange={e => setPassword(e.target.value)}
         />
       </label>
       <div className='modal__secondary-button'>
