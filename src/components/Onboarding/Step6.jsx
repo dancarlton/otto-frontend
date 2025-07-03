@@ -17,7 +17,7 @@ export default function Step6({ formData, prev }) {
     } catch (error) {
       console.error('Failed to submit preferences:', error.message)
       alert('Failed to submit preferences, please try again later')
-      navigate('/')
+      navigate('/marketing')
     }
   }
 
