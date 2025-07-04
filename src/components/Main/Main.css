@@ -14,14 +14,58 @@
   line-height: 1.2;
 }
 
-.main__wotw {
-  width: 100%;
+.surf-edit {
   max-width: 900px;
-  height: auto;
+  margin: 0 auto;
   border-radius: 2rem;
   overflow: hidden;
-  display: block;
-  margin: 0 auto;
-  background-color: #000;
+  position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.surf-edit__preview {
+  position: relative;
+  cursor: pointer;
+}
+
+.surf-edit__thumbnail {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.surf-edit__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.85));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.surf-edit__play {
+  margin-top: 1rem;
+  font-size: 2.2rem;
+  background: none;
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  cursor: pointer;
+}
+
+.surf-edit__iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+  display: block;
 }

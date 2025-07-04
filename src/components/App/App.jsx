@@ -7,7 +7,7 @@ import {
   useNavigate,
   Navigate,
 } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -16,14 +16,16 @@ import RegisterModal from '../RegisterModal/RegisterModal'
 import MarketingPage from '../../pages/MarketingPage'
 import OnboardingPage from '../../pages/OnboardingPage'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
+import Preloader from '../Preloader/Preloader'
 
-import { loginUser, registerUser } from '../../utils/api'
+import { getUser, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
   const [userData, setUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -69,8 +71,34 @@ export default function App() {
     !!userData?.preferences?.gear?.fins?.length &&
     !!userData?.preferences?.notifications?.length
 
+
+  useEffect(() => {
+    setIsLoading(true)
+    const token = localStorage.getItem('jwt')
+
+    if (token) {
+      getUser(token)
+        .then(user => {
+          setUserData(user)
+          setIsLoggedIn(true)
+          navigate('/')
+        })
+        .catch(err => {
+          console.error('Invalid token, logging out:', err)
+          localStorage.removeItem('jwt')
+          setIsLoggedIn(false)
+          setUserData(null)
+        })
+        .finally(() => setIsLoading(false))
+    } else {
+      setIsLoading(false)
+    }
+  }, [navigate])
+
+  if (isLoading) return <Preloader />
+
   return (
-    <CurrentUserContext.Provider value={{ userData, isLoggedIn, isOnboarded }}>
+    <CurrentUserContext.Provider value={{ userData, setUserData, isLoggedIn, isOnboarded }}>
       <div className='page'>
         {!isOnboarding && (
           <Header

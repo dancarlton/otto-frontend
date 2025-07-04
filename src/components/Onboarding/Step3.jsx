@@ -16,7 +16,7 @@ export default function Step3({ formData, updateForm, next, prev }) {
     'Longboard',
     'Fish',
     'Funboard',
-    'Just my body',
+    'My body ofcourse',
   ]
   const wetsuits = [
     'Nope',

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { updateUser } from '../../utils/api'
+import { getUser, updateUser } from '../../utils/api'
 import '../Onboarding/Onboarding.css'
 import { useContext } from 'react'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
 export default function Step6({ formData, prev }) {
-  const {userData} = useContext(CurrentUserContext)
+  const { setUserData } = useContext(CurrentUserContext)
   const navigate = useNavigate()
 
   const handleSubmit = async e => {
@@ -13,9 +13,14 @@ export default function Step6({ formData, prev }) {
     const token = localStorage.getItem('jwt')
 
     try {
-      const updatedUser = await updateUser(token, {preferences: formData})
+      await updateUser(token, { preferences: formData })
+
+      const updatedUser = await getUser(token)
+      setUserData(updatedUser)
+
       console.log('Updated user:', updatedUser.name)
       console.log('With preferences:', formData)
+
       navigate('/')
     } catch (error) {
       console.error('Failed to submit preferences:', error.message)
