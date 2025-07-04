@@ -10,7 +10,7 @@ export default function SearchBar() {
         placeholder="Where should I surf tomorrow morning?"
       />
       <button type="submit" className="searchbar__button">
-        <FiSearch size={20} />
+        <FiSearch size={18} />
       </button>
     </form>
   );

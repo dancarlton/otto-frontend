@@ -13,6 +13,22 @@ export async function verifyToken(token) {
   return await response.json()
 }
 
+export async function getUser(token) {
+  const response = await fetch(`${baseUrl}/users/me`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch user')
+  }
+
+  return await response.json()
+}
+
 export async function loginUser(email, password) {
   const response = await fetch(`${baseUrl}/users/login`, {
     method: 'POST',

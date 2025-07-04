@@ -33,7 +33,7 @@ export default function Header({ onLoginClick, onRegisterClick }) {
           </div>
         ) : (
           <div className='header__profile'>
-            <span className='header__username'>Hi, {userData?.name}</span>
+            <span className='header__username'>Hi, {userData?.name && userData.name.charAt(0).toUpperCase() + userData.name.slice(1)}</span>
             {/* <Link to='/profile' className='button-outline'>
               Profile
             </Link>
