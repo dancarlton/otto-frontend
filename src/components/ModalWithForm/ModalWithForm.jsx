@@ -15,7 +15,7 @@ export default function ModalWithForm({
         <button onClick={onClose} className="modal__close"></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button className="modal__submit">{buttonText}</button>
+          <button type="submit" className="modal__submit">{buttonText}</button>
         </form>
       </div>
     </div>

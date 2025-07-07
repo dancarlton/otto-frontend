@@ -19,7 +19,7 @@ export default function Main() {
             className='surf-edit__thumbnail'
           />
           <div className='surf-edit__overlay'>
-            <h2>Notable Surf Edit</h2>
+            <h2>Surf Edit of the Week</h2>
             <button className='surf-edit__play'>▶</button>
           </div>
         </div>

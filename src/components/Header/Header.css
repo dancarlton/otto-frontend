@@ -54,6 +54,12 @@
   gap: 0.75rem;
 }
 
+.header__profile {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
 .button-outline {
   background: transparent;
   border: 1px solid rgb(125, 180, 193);

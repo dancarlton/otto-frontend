@@ -5,15 +5,18 @@ import './Header.css'
 import logo from '/src/assets/logo.png'
 import { Link } from 'react-router-dom'
 
-export default function Header({ onLoginClick, onRegisterClick }) {
+export default function Header({
+  onLoginClick,
+  onRegisterClick,
+  onLogoutClick,
+}) {
   const { userData, isLoggedIn, isOnboarded } = useContext(CurrentUserContext)
 
   return (
     <header className='header'>
       <div className='header__container'>
         <div className='header__logo'>
-
-          <Link to={isLoggedIn ? '/' : '/marketing' }>
+          <Link to={isLoggedIn ? '/' : '/marketing'}>
             <img src={logo} alt='Otto logo' />
             <span>OTTO</span>
           </Link>
@@ -33,7 +36,19 @@ export default function Header({ onLoginClick, onRegisterClick }) {
           </div>
         ) : (
           <div className='header__profile'>
-            <span className='header__username'>Hi, {userData?.name && userData.name.charAt(0).toUpperCase() + userData.name.slice(1)}</span>
+            <span className='header__username'>
+              Hi{' '}
+              {userData?.name &&
+                userData.name.charAt(0).toUpperCase() + userData.name.slice(1)}
+              !
+            </span>
+            <button
+              className='header__logout button-outline'
+              onClick={onLogoutClick}
+            >
+              Log out
+            </button>
+
             {/* <Link to='/profile' className='button-outline'>
               Profile
             </Link>
