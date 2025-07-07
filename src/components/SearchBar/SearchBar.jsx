@@ -5,12 +5,16 @@ import ChatBox from '../ChatBox/ChatBox'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
+  const [activeQuery, setActiveQuery] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false)
+
 
   const handleSubmit = e => {
     e.preventDefault()
     if (query.trim()) {
+      setActiveQuery(query)
       setIsChatOpen(true)
+      setQuery('')
     }
   }
 
@@ -25,6 +29,8 @@ export default function SearchBar() {
       document.body.style.overflow = 'auto'
     }
   }, [isChatOpen])
+
+
 
   return (
     <>
@@ -51,7 +57,7 @@ export default function SearchBar() {
             >
               ✕
             </button>
-            <ChatBox initalMessage={query} />
+            <ChatBox initialMessage={activeQuery} />
           </div>
         </>
       )}
