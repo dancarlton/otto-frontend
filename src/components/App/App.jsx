@@ -77,6 +77,7 @@ export default function App() {
     !!userData?.preferences?.gear?.boards?.length &&
     !!userData?.preferences?.gear?.wetsuits?.length &&
     !!userData?.preferences?.gear?.fins?.length &&
+    !!userData?.preferences?.travelDistance?.length &&
     !!userData?.preferences?.notifications?.length
 
   // check for JWT once on page load

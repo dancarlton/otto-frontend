@@ -19,7 +19,7 @@ export default function Step3({ formData, updateForm, next, prev }) {
     'My body ofcourse',
   ]
   const wetsuits = [
-    'Nope',
+    'Just my skin suit',
     'Spring Suit',
     'Full Suit (3/2mm)',
     'Full Suit (4/3mm+)',
@@ -30,7 +30,7 @@ export default function Step3({ formData, updateForm, next, prev }) {
     'Twin Fin',
     'Thruster (3 fins)',
     'Quad (4 fins)',
-    'Just the ones for my feet',
+    'The ones for my feet',
   ]
 
   const toggle = (type, value, setFn, current) => {
@@ -108,7 +108,10 @@ export default function Step3({ formData, updateForm, next, prev }) {
       </div>
 
       <div className='onboarding__nav-wrapper'>
-        <button className='onboarding__nav-button onboarding__nav-button--left' onClick={prev}>
+        <button
+          className='onboarding__nav-button onboarding__nav-button--left'
+          onClick={prev}
+        >
           ←
         </button>
         <button

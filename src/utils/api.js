@@ -74,3 +74,16 @@ export async function updateUser(token, userData) {
 
   return await response.json()
 }
+
+export async function askOtto(message, token) {
+  const response = await fetch(`${baseUrl}/gpt/chat`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ message }),
+  })
+
+  return await response.json()
+}
