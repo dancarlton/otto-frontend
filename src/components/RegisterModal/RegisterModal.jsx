@@ -2,7 +2,7 @@ import { useState } from 'react'
 import ModalWithForm from '../ModalWithForm/ModalWithForm'
 import './RegisterModal.css'
 
-function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
+export default function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -77,5 +77,3 @@ function RegisterModal({ onClose, onRegister, isOpen, handleLoginClick }) {
     </ModalWithForm>
   )
 }
-
-export default RegisterModal

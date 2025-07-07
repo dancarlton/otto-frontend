@@ -1,6 +1,5 @@
 // App.jsx
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   useLocation,
@@ -20,18 +19,20 @@ import Preloader from '../Preloader/Preloader'
 
 import { getUser, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'
+import LogoutModal from '../LogoutModal/LogoutModal'
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
   const [userData, setUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [checkingAuth, setCheckingAuth] = useState(true)
 
   const location = useLocation()
   const navigate = useNavigate()
 
   const openLoginModal = () => setActiveModal('login')
   const openRegisterModal = () => setActiveModal('register')
+  const openLogoutModal = () => setActiveModal('logout')
   const closeActiveModal = () => setActiveModal('')
 
   const isOnboarding = location.pathname === '/onboarding'
@@ -62,6 +63,13 @@ export default function App() {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwt')
+    setIsLoggedIn(false)
+    setUserData(null)
+    navigate('/marketing')
+  }
+
   // coercing the values into a strict boolean to use for CurrentUserContext
   const isOnboarded =
     !!userData?.preferences?.waveHeight?.length &&
@@ -71,9 +79,11 @@ export default function App() {
     !!userData?.preferences?.gear?.fins?.length &&
     !!userData?.preferences?.notifications?.length
 
-
+  // check for JWT once on page load
+  // fetch user
+  // redirect to homepage if needed
+  // (stay on homepage when browser is refreshed)
   useEffect(() => {
-    setIsLoading(true)
     const token = localStorage.getItem('jwt')
 
     if (token) {
@@ -81,7 +91,12 @@ export default function App() {
         .then(user => {
           setUserData(user)
           setIsLoggedIn(true)
-          navigate('/')
+          if (
+            location.pathname === '/marketing' ||
+            location.pathname === '/onboarding'
+          ) {
+            navigate('/')
+          }
         })
         .catch(err => {
           console.error('Invalid token, logging out:', err)
@@ -89,21 +104,24 @@ export default function App() {
           setIsLoggedIn(false)
           setUserData(null)
         })
-        .finally(() => setIsLoading(false))
+        .finally(() => setCheckingAuth(false))
     } else {
-      setIsLoading(false)
+      setCheckingAuth(false)
     }
-  }, [navigate])
+  }, [])
 
-  if (isLoading) return <Preloader />
+  if (checkingAuth) return <Preloader />
 
   return (
-    <CurrentUserContext.Provider value={{ userData, setUserData, isLoggedIn, isOnboarded }}>
+    <CurrentUserContext.Provider
+      value={{ userData, setUserData, isLoggedIn, isOnboarded }}
+    >
       <div className='page'>
         {!isOnboarding && (
           <Header
             onLoginClick={openLoginModal}
             onRegisterClick={openRegisterModal}
+            onLogoutClick={openLogoutModal}
             onClose={closeActiveModal}
           />
         )}
@@ -173,6 +191,11 @@ export default function App() {
           isOpen={activeModal === 'register'}
           onClose={closeActiveModal}
           onRegister={handleRegister}
+        />
+        <LogoutModal
+          isOpen={activeModal === 'logout'}
+          onClose={closeActiveModal}
+          onLogout={handleLogout}
         />
       </div>
     </CurrentUserContext.Provider>
