@@ -1,0 +1,42 @@
+.surf-card {
+  width: 220px;
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.surf-card__img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.surf-card__overlay {
+  padding: 12px;
+  background-color: #000;
+}
+
+.surf-card__wave {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.surf-card__match {
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.surf-card__name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0 4px;
+}
+
+.surf-card__details {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function Step2({ formData, updateForm, next, prev }) {
   const [selected, setSelected] = useState(formData.waveHeight || []);
