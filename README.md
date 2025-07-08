@@ -1,6 +1,8 @@
 # 🌊 Otto – Your Personalized Surf Reporter
 
-Otto is a custom-built React application that helps surfers stay dialed in to the best wave conditions based on their personal preferences. Whether you're chasing clean morning lines or dodging blown-out onshore chop, Otto alerts you when the surf is just right near your favorite breaks.
+Otto is a full-stack surf forecasting app that uses real-time buoy data, user preferences, and GPT to recommend **where, when, and how to surf**. Whether you're chasing clean morning lines or dodging blown-out onshore chop, Otto helps you stay dialed in.
+
+Built with React, Express, and MongoDB, Otto delivers personalized forecasts tailored to your surf style.
 
 ---
 
@@ -8,32 +10,50 @@ Otto is a custom-built React application that helps surfers stay dialed in to th
 
 - **Frontend:** React (with React Router)
 - **Backend:** Node.js + Express
-- **Database:** MongoDB
-- **Auth:** JWT
-- **Notifications:** Firebase Cloud Messaging
+- **Database:** MongoDB + Mongoose
+- **Auth:** JWT (Token-based authentication)
+- **Validation:** Celebrate + Joi
+- **Notifications:** Firebase Cloud Messaging *(planned)*
+- **AI Engine:** OpenAI GPT-3.5 (GPT-4o upgrade planned)
 
 ---
 
 ## 🔌 APIs Used
 
-- **[OpenAI API](https://platform.openai.com/docs)**
-  Used to generate personalized surf reports based on each user's saved preferences using GPT-4o.
-  - Token usage is tracked per user
-  - A free limit is enforced unless the user upgrades to Pro
+### 🧠 [OpenAI API](https://platform.openai.com/docs)
+- Powers Otto's surf forecasting assistant
+- Personalized prompts generated from user data + buoy data
+- Returns helpful replies + structured JSON
+- Token usage tracked per user
+- Free daily limit (paywall-ready)
 
-- **[National Data Buoy Center](https://www.ndbc.noaa.gov/)** *(Planned for future release)*
-  Will be used to ingest raw buoy data including swell, wind, and tide, matched to user-selected surf spots.
+### 🌊 [NOAA / NDBC Buoy API](https://www.ndbc.noaa.gov/)
+- Fetches real-time marine weather via public RSS feeds
+- Parses wave height, swell direction, period, water temperature
+- Used to inform GPT + match surf conditions to user prefs
 
 ---
 
-## 🚀 Features
+## ✅ Features Implemented
 
-- 🌐 User registration and login (JWT)
-- 🌊 Surf preference setup (ideal wave height, wind, swell, tide, etc.)
-- 📍 Favorite surf spots by location
-- 📡 Real-time buoy + forecast data analysis *(planned)*
-- 🔔 Push notifications when conditions match preferences
-- 🧠 Optional GPT integration for surf spot suggestions (coming soon)
+- 🔐 Secure user registration/login (JWT)
+- 📝 Surf preference setup (wave height, gear, experience, etc.)
+- 📍 Geolocation-aware surf spot and buoy mapping
+- 🌊 Buoy station API with live NOAA/NDBC data
+- 🤖 Ask Otto — GPT-generated surf forecasts with JSON response
+- 🔁 Daily GPT usage limit (rate-limiting enabled per user)
+- 🧪 Route-level validation (Celebrate / Joi)
+- 🧱 Modular Express backend with clean error handling
+
+---
+
+## 🧠 How It Works
+
+1. **User creates an account** and saves surf preferences
+2. Otto finds the **nearest buoy** to a location (via coordinates or spot)
+3. Otto fetches live **NOAA buoy data** (wave height, swell direction, etc.)
+4. GPT prompt is generated with **user prefs + live data**
+5. Otto replies with a helpful response + JSON forecast
 
 ---
 
@@ -43,5 +63,4 @@ Otto is a custom-built React application that helps surfers stay dialed in to th
 
 ```bash
 git clone https://github.com/yourusername/otto.git
-cd otto-frontend
-```
+cd otto-backend
