@@ -1,0 +1,18 @@
+.surf-spot {
+  padding: 40px;
+  background-color: #232931;
+  min-height: 100vh;
+}
+
+.surf-spot__title {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.surf-spot__grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
