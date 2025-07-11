@@ -1,4 +1,5 @@
 /* index.css – reset and baseline styles */
+@import './vendor/fonts.css';
 
 *,
 *::before,
@@ -28,6 +29,7 @@ a {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
+  font-family: 'Cabinent-Grotesk', sans-serif;
 }
 
 /* Buttons */

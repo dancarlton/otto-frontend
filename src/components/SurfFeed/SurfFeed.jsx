@@ -5,7 +5,7 @@ import { fetchSurfSpots } from '../../utils/api'
 import Preloader from '../Preloader/Preloader'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
-export default function SurfFeed() {
+export default function SurfFeed({backgroundImage}) {
   const [spots, setSpots] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -22,7 +22,7 @@ export default function SurfFeed() {
   if (loading) return <Preloader />
 
   return (
-    <section className='surf-spot'>
+    <section className='surf-spot' style={{backgroundImage: `url(${backgroundImage})`}}>
       <h2 className='surf-spot__title'>Surf Feed</h2>
       <ul className='surf-spot__grid'>
         {spots
