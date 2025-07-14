@@ -50,6 +50,7 @@ export default function App() {
       alert('Login failed. Please try again.')
     }
   }
+
   const handleRegister = async ({ name, email, password }) => {
     try {
       const { user, token } = await registerUser(name, email, password)
@@ -59,7 +60,7 @@ export default function App() {
       navigate('/onboarding')
     } catch (err) {
       console.error('Registration failed:', err)
-      alert('Registration failed. Please try again.')
+      alert(err.message)
     }
   }
 
@@ -115,7 +116,7 @@ export default function App() {
 
   return (
     <CurrentUserContext.Provider
-      value={{ userData, setUserData, isLoggedIn, isOnboarded }}
+      value={{ userData, setUserData, isLoggedIn, isOnboarded, setActiveModal }}
     >
       <div className='page'>
         {!isOnboarding && (
@@ -187,11 +188,13 @@ export default function App() {
           isOpen={activeModal === 'login'}
           onClose={closeActiveModal}
           onLogin={handleLogin}
+          handleRegisterClick={openRegisterModal}
         />
         <RegisterModal
           isOpen={activeModal === 'register'}
           onClose={closeActiveModal}
           onRegister={handleRegister}
+          handleLoginClick={openLoginModal}
         />
         <LogoutModal
           isOpen={activeModal === 'logout'}

@@ -33,3 +33,15 @@
   cursor: pointer;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .searchbar {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .searchbar__input {
+    font-size: 12px;
+  }
+}

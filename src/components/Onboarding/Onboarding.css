@@ -189,3 +189,21 @@ input[type='checkbox'] {
   margin-top: 2rem;
   position: relative;
 }
+
+
+@media (max-width: 768px) {
+  .onboarding__welcome {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  .onboarding__checkbox-label {
+    font-size: 1.3rem;
+  }
+
+  input[type='checkbox'] {
+    width: 26px;
+    height: 26px;
+  }
+}

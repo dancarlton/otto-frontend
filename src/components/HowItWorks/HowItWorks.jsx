@@ -24,7 +24,7 @@ export default function HowItWorks({onRegisterClick}) {
             </p>
             <div className="how__buttons">
               <button onClick={onRegisterClick} className="primary">Try now</button>
-              <button className="secondary">Learn more</button>
+              <button onClick={onRegisterClick} className="secondary">Learn more</button>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function HowItWorks({onRegisterClick}) {
             </p>
             <div className="how__buttons">
               <button onClick={onRegisterClick}  className="primary">Try now</button>
-              <button className="secondary">Learn more</button>
+              <button onClick={onRegisterClick} className="secondary">Learn more</button>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function HowItWorks({onRegisterClick}) {
             </p>
             <div className="how__buttons">
               <button onClick={onRegisterClick}  className="primary">Try now</button>
-              <button className="secondary">Learn more</button>
+              <button onClick={onRegisterClick} className="secondary">Learn more</button>
             </div>
           </div>
         </div>

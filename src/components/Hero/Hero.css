@@ -79,3 +79,19 @@
   text-align: right;
   z-index: 3;
 }
+
+
+@media screen and (max-width: 600px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero__image-accent, .hero__image-accent-rotated {
+    display: none;
+  }
+
+  .hero__image-accent-text, .hero__image-accent-text-rotated {
+    display: none;
+  }
+
+}

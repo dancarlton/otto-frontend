@@ -1,16 +1,24 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './SearchBar.css'
 import { FiSearch } from 'react-icons/fi'
 import ChatBox from '../ChatBox/ChatBox'
+import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
 export default function SearchBar() {
   const [query, setQuery] = useState('')
   const [activeQuery, setActiveQuery] = useState('');
   const [isChatOpen, setIsChatOpen] = useState(false)
 
+  const {isLoggedIn, isOnboarded, setActiveModal } = useContext(CurrentUserContext)
 
   const handleSubmit = e => {
     e.preventDefault()
+
+    if (!isLoggedIn || !isOnboarded) {
+      setActiveModal('register')
+      return
+    }
+
     if (query.trim()) {
       setActiveQuery(query)
       setIsChatOpen(true)
@@ -38,7 +46,7 @@ export default function SearchBar() {
         <input
           type='text'
           className='searchbar__input'
-          placeholder='Where should I surf tomorrow morning?'
+          placeholder='Best time to surf in Malibu today?'
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
