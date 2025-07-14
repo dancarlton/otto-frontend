@@ -55,7 +55,8 @@ export async function registerUser(name, email, password) {
   })
 
   if (!response.ok) {
-    throw new Error('Failed to register')
+    const errorBody = await response.json()
+    throw new Error(errorBody.message || 'Failed to register')
   }
 
   return await response.json()
@@ -71,7 +72,8 @@ export async function updateUser(token, userData) {
     body: JSON.stringify(userData),
   })
   if (!response.ok) {
-    throw new Error('Failed to update user')
+    const errorBody = await response.json()
+    throw new Error(errorBody.message || 'Failed to update user')
   }
 
   return await response.json()

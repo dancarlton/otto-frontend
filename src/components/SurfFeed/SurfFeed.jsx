@@ -1,15 +1,12 @@
 import './SurfFeed.css'
 import SurfCard from '../SurfCard/SurfCard'
-import { useContext, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { fetchSurfSpots } from '../../utils/api'
 import Preloader from '../Preloader/Preloader'
-import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
 export default function SurfFeed({backgroundImage}) {
   const [spots, setSpots] = useState([])
   const [loading, setLoading] = useState(true)
-
-  const { userData } = useContext(CurrentUserContext)
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')

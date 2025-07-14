@@ -1,5 +1,7 @@
 .surf-card {
-  width: 220px;
+  width: 250px;
+  height: 100%;
+  margin: 0 auto;
   background-color: #000;
   border-radius: 10px;
   overflow: hidden;
@@ -13,11 +15,17 @@
   width: 100%;
   height: 160px;
   object-fit: cover;
+  display: block;
+  flex-shrink: 0;
 }
 
 .surf-card__overlay {
+  flex: 1;
   padding: 12px;
   background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .surf-card__wave {
@@ -39,4 +47,15 @@
 .surf-card__details {
   font-size: 0.75rem;
   opacity: 0.85;
+}
+
+@media (max-width: 786px) {
+  .surf-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .surf-card__img {
+    height: 180px;
+  }
 }
