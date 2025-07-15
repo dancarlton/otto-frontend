@@ -1,4 +1,4 @@
-const baseUrl = 'https://api.otto.soon.it:3001/api'
+const baseUrl = 'https://api.otto.soon.it/api'
 
 // token api request
 export async function verifyToken(token) {
