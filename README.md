@@ -83,8 +83,8 @@ The frontend requires the backend to be running. Clone and set up the backend he
 ### 1️⃣ Clone Both Repos
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/otto-frontend.git
-git clone https://github.com/YOUR_USERNAME/otto-backend.git
+git clone https://github.com/dancarlton/otto-frontend.git
+git clone https://github.com/dancarlton/otto-backend.git
 ```
 ### 2️⃣ Setup the Backend
 ```
