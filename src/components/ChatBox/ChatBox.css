@@ -82,31 +82,54 @@
 }
 
 .chatbox__input {
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
   padding: 1rem;
   border-top: 1px solid #eee;
   background: white;
   position: sticky;
   bottom: 0;
+  left: 0;
 }
 
 .chatbox__input input {
-  flex: 1;
+  flex: 1; /* this keeps it from overflowing */
   padding: 0.75rem 1rem;
   border-radius: 20px;
   border: 1px solid #ccc;
   outline: none;
   font-size: 16px;
+  min-width: 0; /* prevents input from forcing layout issues */
 }
 
 .chatbox__input button {
   background: #5fc8d5;
   border: none;
   color: white;
-  padding: 0 1rem;
+  padding: 0.75rem 1rem;
   border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
   min-width: 64px;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .chatbox__input {
+    flex-direction: row;
+    padding: 0.75rem;
+  }
+
+  .chatbox__input input {
+    font-size: 16px;
+    padding: 0.75rem;
+  }
+
+  .chatbox__input button {
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+  }
 }
