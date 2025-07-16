@@ -11,13 +11,7 @@ export default function Step5({ formData, updateForm, next, prev }) {
   const [canContinue, setContinue] = useState(false)
 
   const notifications = ['Yes', 'No', 'Maybe so']
-  const travelDistance = [
-    '1-5 miles',
-    '5-10 miles',
-    '10-15 miles',
-    '20+',
-    'No wave is too far',
-  ]
+  const travelDistance = ['1-5 miles', '5-10 miles', '10-15 miles', '20+']
 
   const sortDistance = arr => {
     const order = {
@@ -25,7 +19,6 @@ export default function Step5({ formData, updateForm, next, prev }) {
       '5-10 miles': 1,
       '10-15 miles': 2,
       '20+': 3,
-      'No wave is too far': 4,
     }
     return [...arr].sort((a, b) => order[a] - order[b])
   }
