@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Buttons */
 button {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
@@ -53,4 +53,12 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Form elements 16px font minimum to prevent auto zoom on mobile */
+input,
+select,
+textarea,
+label {
+  font-size: 16px;
 }
