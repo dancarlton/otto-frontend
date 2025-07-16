@@ -46,7 +46,7 @@ export default function SearchBar() {
         <input
           type='text'
           className='searchbar__input'
-          placeholder='Best time to surf in Malibu today?'
+          placeholder='Best time to surf in Malibu?'
           value={query}
           onChange={e => setQuery(e.target.value)}
         />
