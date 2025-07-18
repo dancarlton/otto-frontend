@@ -1,0 +1,44 @@
+.surf-spot {
+  padding: 40px;
+  background-color: #232931;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+}
+
+.surf-spot__title {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.surf-spot__grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 786px) {
+  .surf-spot__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .surf-spot__title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .surf-spot {
+    padding: 40px 20px;
+  }
+}

@@ -1,0 +1,169 @@
+.header {
+  background-color: #000;
+  color: #fff;
+  padding: 1.25rem 0;
+  overflow-x: hidden;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__search {
+  flex: 1;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center
+}
+
+.header__menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.header__logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.header__logo img {
+  width: 50px;
+}
+
+.header__nav a:hover {
+  opacity: 0.75;
+}
+
+.header__auth {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.header__profile {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* hamburger styles */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.header__hamburger-line {
+  width: 24px;
+  height: 2px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+
+/* buttons inside the Header */
+.button {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button--outline {
+  background: transparent;
+  border: 1px solid rgb(125, 180, 193);
+  color: #80dce6;
+}
+
+.button--filled {
+  background: rgb(125, 180, 193);
+  color: white;
+  border: none;
+}
+
+.button--outline:hover,
+.button--filled:hover {
+  background-color: rgba(125, 180, 193, 0.15);
+  opacity: 0.85;
+}
+
+
+/* mobile responsive */
+@media (max-width: 768px) {
+  .header__menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0;
+    gap: 1rem;
+    background-color: #000;
+  }
+
+  .header__menu--open {
+    display: flex;
+  }
+
+  .header__auth,
+  .header__profile {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .header__hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .header__hamburger-line {
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+  }
+
+  .header__container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .header__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+  }
+}

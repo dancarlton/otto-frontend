@@ -1,0 +1,82 @@
+.how {
+  background-color: #000;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.how__title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.how__subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 3rem;
+}
+
+.how__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.how__step {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.how__step--reverse {
+  flex-direction: row-reverse;
+}
+
+.how__image {
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.how__text {
+  max-width: 320px;
+}
+
+.how__text h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.how__text p {
+  color: #ccc;
+  font-size: 1.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.how__buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+button.primary {
+  background-color: rgb(125, 180, 193);
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  width: 115px;
+}
+
+button.secondary {
+  background: transparent;
+  color: #fff;
+  /* padding: 0.5rem 1rem; */
+  border-radius: 999px;
+  cursor: pointer;
+}

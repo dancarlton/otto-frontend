@@ -1,0 +1,210 @@
+/* Main container */
+.onboarding__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  margin: 2rem auto 1rem;
+}
+
+.onboarding__logo img {
+  width: 50px;
+  /* height: 28px; */
+}
+
+.onboarding__welcome {
+  font-size: 45px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 40px;
+  font-weight: 900;
+}
+
+.onboarding__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 80vh;
+  padding: 2rem;
+  text-align: left;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+
+}
+
+/* Title and subtext */
+.onboarding__title {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.onboarding__subtext {
+  font-size: 1.1rem;
+  text-align: center;
+  opacity: 0.8;
+  margin-top: -1rem;
+  margin-bottom: 20px;
+}
+
+/* Checkboxes */
+.onboarding__checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  width: max-content;
+  align-self: center;
+  text-align: left;
+}
+
+.onboarding__checkbox-label {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  accent-color: black;
+}
+
+/* Progress dots */
+.onboarding__progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.onboarding__dot {
+  width: 10px;
+  height: 10px;
+  background: gray;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.onboarding__dot--active {
+  background: white;
+  transform: scale(1.3);
+}
+
+.onboarding__nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+  max-width: 500px;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+.onboarding__nav-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 60px;
+  margin: 2rem auto 0;
+}
+
+.onboarding__nav-button {
+  background-color: #ffffff;
+  color: #000;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute;
+  top: 0;
+}
+
+.onboarding__nav-button--left {
+  left: 0;
+}
+
+.onboarding__nav-button--right {
+  right: 0;
+}
+
+.onboarding__nav-button:hover {
+  transform: scale(1.1);
+}
+
+.onboarding__nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.onboarding__submit-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.onboarding__submit-button {
+  background-color: white;
+  color: black;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.onboarding__submit-button:hover {
+  background-color: #ddd;
+}
+
+.onboarding__submit-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+}
+
+
+@media (max-width: 768px) {
+  .onboarding__welcome {
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  .onboarding__checkbox-label {
+    font-size: 1.3rem;
+  }
+
+  input[type='checkbox'] {
+    width: 26px;
+    height: 26px;
+    accent-color: black;
+  }
+}
