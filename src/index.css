@@ -1,0 +1,64 @@
+/* index.css – reset and baseline styles */
+@import './vendor/fonts.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #0a0a0a;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: 'Cabinent-Grotesk', sans-serif;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1a1a1a;
+  color: white;
+}
+
+button:hover {
+  background-color: #333;
+}
+
+/* Responsive base */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Form elements 16px font minimum to prevent auto zoom on mobile */
+input,
+select,
+textarea,
+label {
+  font-size: 16px;
+}
