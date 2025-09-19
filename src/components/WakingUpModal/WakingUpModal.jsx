@@ -12,7 +12,7 @@ function WakingUpModal({ isOpen, onClose }) {
       buttonText='Close'
       className='waking-up'
     >
-      <div className='modal__content--spinner'>
+      <div className='modal__content'>
         <Lottie animationData={spinner} />
         <p>🐾 Servers are fetching… Otto’s still paddling.</p>
         <p>Grab a towel — we’ll be ready in just a moment.</p>

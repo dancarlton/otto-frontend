@@ -8,6 +8,7 @@ export default function ModalWithForm({
   onSubmit,
   isOpen,
   buttonText,
+  className = ''
 }) {
   useEffect(() => {
     const handleEscape = e => {
@@ -26,7 +27,7 @@ export default function ModalWithForm({
   }, [isOpen, onClose])
 
   return (
-    <div className={`modal ${isOpen ? 'modal_opened' : ''}`}>
+    <div className={`modal ${isOpen ? 'modal_opened' : ''} ${className}`}>
       <div className='modal__content'>
         <h2 className='modal__title'>{title}</h2>
         <button onClick={onClose} className='modal__close' />

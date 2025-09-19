@@ -1,4 +1,4 @@
-.waking-up .modal__content-spinner {
+.waking-up .modal__content {
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -7,7 +7,7 @@
 
 }
 
-.waking-up .modal__content-spinner p:first-child {
+.waking-up .modal__content p:first-child {
   font-size: 1.8rem;
   font-weight: bold;
   margin-top: 20px;
