@@ -1,0 +1,26 @@
+.modal__content {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: rgb(103, 103, 143);
+
+}
+
+.modal__content p:first-child {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.modal__submit {
+    display: none;
+}
+
+.modal__close {
+    display: none;
+}
+
+.modal {
+  background-color: #000000d3;
+}

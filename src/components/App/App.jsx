@@ -20,12 +20,14 @@ import Preloader from '../Preloader/Preloader'
 import { getUser, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'
 import LogoutModal from '../LogoutModal/LogoutModal'
+import WakingUpModal from '../WakingUpModal/WakingUpModal'
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
   const [userData, setUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [checkingAuth, setCheckingAuth] = useState(true)
+  const [isWakingUp, setIsWakingUp] = useState(false)
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -112,6 +114,28 @@ export default function App() {
     }
   }, [])
 
+
+  // wake up Render servers
+  useEffect(() => {
+    const wakeUp = async () => {
+      try {
+        const response = await fetch(`https://otto-backend-9bmr.onrender.com/health`)
+
+        if (!response.ok) {
+          throw new Error('failed fetching Render server')
+        }
+
+        setIsWakingUp(false)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
+    wakeUp()
+  }, [])
+
+
+
   if (checkingAuth) return <Preloader />
 
   return (
@@ -183,7 +207,12 @@ export default function App() {
         </div>
 
         {!isOnboarding && <Footer />}
-
+        {isWakingUp && (
+          <WakingUpModal
+            isOpen={isWakingUp}
+            onClose={closeActiveModal}
+          />
+        )}
         <LoginModal
           isOpen={activeModal === 'login'}
           onClose={closeActiveModal}
