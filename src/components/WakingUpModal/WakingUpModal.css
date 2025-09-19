@@ -1,4 +1,4 @@
-.modal__content {
+.waking-up .modal__content-spinner {
   text-align: center;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -7,20 +7,20 @@
 
 }
 
-.modal__content p:first-child {
+.waking-up .modal__content-spinner p:first-child {
   font-size: 1.8rem;
   font-weight: bold;
   margin-top: 20px;
 }
 
-.modal__submit {
+.waking-up .modal__submit {
     display: none;
 }
 
-.modal__close {
+.waking-up .modal__close {
     display: none;
 }
 
-.modal {
+.waking-up .modal {
   background-color: #000000d3;
 }
