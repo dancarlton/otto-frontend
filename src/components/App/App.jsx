@@ -27,7 +27,7 @@ export default function App() {
   const [userData, setUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [checkingAuth, setCheckingAuth] = useState(true)
-  const [isWakingUp, setIsWakingUp] = useState(false)
+  const [isWakingUp, setIsWakingUp] = useState(true)
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -114,27 +114,29 @@ export default function App() {
     }
   }, [])
 
-
   // wake up Render servers
   useEffect(() => {
     const wakeUp = async () => {
       try {
-        const response = await fetch(`https://otto-backend-9bmr.onrender.com/health`)
+        console.log('⏳ Waking up backend...')
+        const response = await fetch(
+          'https://otto-backend-9bmr.onrender.com/health'
+        )
 
         if (!response.ok) {
-          throw new Error('failed fetching Render server')
+          throw new Error('Health check failed')
         }
 
-        setIsWakingUp(false)
+        console.log('✅ Backend is awake!')
       } catch (err) {
-        console.error(err)
+        console.error('❌ Wake-up failed:', err)
+      } finally {
+        setIsWakingUp(false)
       }
     }
 
     wakeUp()
   }, [])
-
-
 
   if (checkingAuth) return <Preloader />
 
@@ -208,10 +210,7 @@ export default function App() {
 
         {!isOnboarding && <Footer />}
         {isWakingUp && (
-          <WakingUpModal
-            isOpen={isWakingUp}
-            onClose={closeActiveModal}
-          />
+          <WakingUpModal isOpen={isWakingUp} onClose={closeActiveModal} />
         )}
         <LoginModal
           isOpen={activeModal === 'login'}

@@ -1,6 +1,6 @@
 const baseUrl =
   import.meta.env.NODE_ENV === 'production'
-    ? 'https://otto-backend-xxxx.onrender.com/api'
+    ? 'https://otto-backend-9bmr.onrender.com/api'
     : 'http://localhost:3001/api';
 
 // token api request
