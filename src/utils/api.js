@@ -1,7 +1,7 @@
 const baseUrl =
   import.meta.env.NODE_ENV === 'production'
     ? 'https://otto-backend-9bmr.onrender.com/api'
-    : 'http://localhost:3001/api';
+    : 'http://localhost:3001/api'
 
 // token api request
 export async function verifyToken(token) {
@@ -157,6 +157,17 @@ export async function fetchSpotByName(name, token) {
 
   if (!response.ok) {
     throw new Error('Failed to fetch surf spot by name')
+  }
+
+  return await response.json()
+}
+
+// waking up render servers
+export async function healthCheck() {
+  const response = await fetch(`${baseUrl.replace('/api', '')}/health`)
+
+  if (!response.ok) {
+    throw new Error('Health check failed')
   }
 
   return await response.json()

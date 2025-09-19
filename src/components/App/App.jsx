@@ -17,7 +17,7 @@ import OnboardingPage from '../../pages/OnboardingPage'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
 import Preloader from '../Preloader/Preloader'
 
-import { getUser, loginUser, registerUser } from '../../utils/api'
+import { getUser, healthCheck, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'
 import LogoutModal from '../LogoutModal/LogoutModal'
 import WakingUpModal from '../WakingUpModal/WakingUpModal'
@@ -117,16 +117,9 @@ export default function App() {
   // wake up Render servers
   useEffect(() => {
     const wakeUp = async () => {
+      setIsWakingUp(true)
       try {
-        console.log('⏳ Waking up backend...')
-        const response = await fetch(
-          'https://otto-backend-9bmr.onrender.com/health'
-        )
-
-        if (!response.ok) {
-          throw new Error('Health check failed')
-        }
-
+        await healthCheck()
         console.log('✅ Backend is awake!')
       } catch (err) {
         console.error('❌ Wake-up failed:', err)
