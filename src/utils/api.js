@@ -1,7 +1,4 @@
-const baseUrl =
-  import.meta.env.NODE_ENV === 'production'
-    ? 'https://otto-backend-9bmr.onrender.com/api'
-    : 'http://localhost:3001/api'
+export const baseUrl = import.meta.env.VITE_API_BASE_URL
 
 // token api request
 export async function verifyToken(token) {
