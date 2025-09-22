@@ -4,7 +4,9 @@
   line-height: 1.6;
   padding: 20px;
   background-color: rgb(103, 103, 143);
-
+  max-width: 90%;
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
 .waking-up .modal__content p:first-child {
@@ -23,4 +25,19 @@
 
 .waking-up .modal {
   background-color: #000000d3;
+}
+
+@media (max-width: 480px) {
+  .waking-up .modal__content {
+    font-size: 1rem;
+    padding: 15px;
+  }
+  .waking-up .modal__content p:first-child {
+    font-size: 1.4rem;
+  }
+  .waking-up .modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
