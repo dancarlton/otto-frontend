@@ -3,7 +3,7 @@ import './WakingUpModal.css'
 import spinner from '../../assets/surfing-poodle-loading.json'
 import Lottie from 'lottie-react'
 
-function WakingUpModal({ isOpen, onClose }) {
+function WakingUpModal({ isOpen, onClose, title, subtitle }) {
   return (
     <ModalWithForm
       activeModal='waking-up'
@@ -14,8 +14,8 @@ function WakingUpModal({ isOpen, onClose }) {
     >
       <div className='modal__content'>
         <Lottie animationData={spinner} />
-        <p>🐾 Servers are fetching… Otto’s still paddling.</p>
-        <p>Grab a towel — we’ll be ready in just a moment.</p>
+        <p>{title}</p>
+        <p>{subtitle}</p>
       </div>
     </ModalWithForm>
   )

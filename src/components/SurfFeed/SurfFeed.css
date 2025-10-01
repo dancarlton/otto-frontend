@@ -8,11 +8,18 @@
   padding: 40px 20px;
 }
 
+.surf-spot__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .surf-spot__title {
   color: white;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 30px;
+  text-align: left;
 }
 
 .surf-spot__grid {
@@ -21,7 +28,8 @@
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
-  margin: 0;
+  /* margin: 0 auto; */
+  /* justify-content: center; */
 }
 
 @media (max-width: 786px) {

@@ -124,6 +124,7 @@ export default function App() {
       } catch (err) {
         console.error('❌ Wake-up failed:', err)
       } finally {
+        // setTimeout(() => setIsWakingUp(false), 1000)
         setIsWakingUp(false)
       }
     }
@@ -131,7 +132,29 @@ export default function App() {
     wakeUp()
   }, [])
 
-  if (checkingAuth) return <Preloader />
+  // if backend is waking up
+if (isWakingUp) {
+  return (
+    <WakingUpModal
+      isOpen={true}
+      onClose={closeActiveModal}
+      title="🐾 Servers are fetching… Otto’s still paddling."
+      subtitle="Grab a towel — we’ll be ready in just a moment."
+    />
+  )
+}
+
+// if still checking auth after wake-up
+if (checkingAuth) {
+  return (
+    <WakingUpModal
+      isOpen={true}
+      onClose={closeActiveModal}
+      title="🏄 Otto’s checking today’s lineup…"
+      subtitle="Hang tight — surf spots loading now."
+    />
+  )
+}
 
   return (
     <CurrentUserContext.Provider
@@ -202,9 +225,7 @@ export default function App() {
         </div>
 
         {!isOnboarding && <Footer />}
-        {isWakingUp && (
-          <WakingUpModal isOpen={isWakingUp} onClose={closeActiveModal} />
-        )}
+
         <LoginModal
           isOpen={activeModal === 'login'}
           onClose={closeActiveModal}
