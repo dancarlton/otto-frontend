@@ -1,8 +1,13 @@
 # 🌊 Otto – Your Personalized Surf Reporter
 
+[![Version](https://img.shields.io/badge/Otto-v2.0.0--in--progress-blue)](https://github.com/dancarlton/otto-frontend/tree/otto-v2)
+
+> 🚀 **Otto v2 is currently being rebuilt on the [`otto-v2`](https://github.com/dancarlton/otto-frontend/tree/otto-v2) branch.**
+
 Otto is a full-stack surf forecasting app that uses real-time buoy data, user preferences, and GPT to recommend **where, when, and how to surf**. Whether you're chasing clean morning lines or dodging blown-out onshore chop, Otto helps you stay dialed in.
 
 Built with React, Express, and MongoDB, Otto delivers personalized forecasts tailored to your surf style.
+
 
 ---
 
