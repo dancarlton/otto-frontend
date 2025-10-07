@@ -8,10 +8,21 @@
 .main h1 {
   font-size: 3rem;
   font-weight: 800;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   color: #fff;
   letter-spacing: 1px;
   line-height: 1.2;
+}
+
+.main__chat {
+  position: absolute;
+  top: 6%;
+  transform: translateX(-3%);
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  width: 100%;
 }
 
 .surf-edit {
