@@ -16,17 +16,16 @@ import MarketingPage from '../../pages/MarketingPage'
 import OnboardingPage from '../../pages/OnboardingPage'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
 
-import { getUser, healthCheck, loginUser, registerUser } from '../../utils/api'
+import { getUser, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'
 import LogoutModal from '../LogoutModal/LogoutModal'
-import WakingUpModal from '../WakingUpModal/WakingUpModal'
+import Preloader from '../Preloader/Preloader'
 
 export default function App() {
   const [activeModal, setActiveModal] = useState('')
   const [userData, setUserData] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [checkingAuth, setCheckingAuth] = useState(true)
-  const [isWakingUp, setIsWakingUp] = useState(true)
 
   const location = useLocation()
   const navigate = useNavigate()
@@ -113,48 +112,6 @@ export default function App() {
     }
   }, [])
 
-  // wake up Render servers
-  useEffect(() => {
-    const wakeUp = async () => {
-      setIsWakingUp(true)
-      try {
-        await healthCheck()
-        console.log('✅ Backend is awake!')
-      } catch (err) {
-        console.error('❌ Wake-up failed:', err)
-      } finally {
-        // setTimeout(() => setIsWakingUp(false), 1000)
-        setIsWakingUp(false)
-      }
-    }
-
-    wakeUp()
-  }, [])
-
-  // if backend is waking up
-if (isWakingUp) {
-  return (
-    <WakingUpModal
-      isOpen={true}
-      onClose={closeActiveModal}
-      title="🐾 Servers are fetching… Otto’s still paddling."
-      subtitle="Grab a towel — we’ll be ready in just a moment."
-    />
-  )
-}
-
-// if still checking auth after wake-up
-if (checkingAuth) {
-  return (
-    <WakingUpModal
-      isOpen={true}
-      onClose={closeActiveModal}
-      title="🏄 Otto’s checking today’s lineup…"
-      subtitle="Hang tight — surf spots loading now."
-    />
-  )
-}
-
   return (
     <CurrentUserContext.Provider
       value={{ userData, setUserData, isLoggedIn, isOnboarded, setActiveModal }}
@@ -170,57 +127,58 @@ if (checkingAuth) {
         )}
 
         <div className='page_content'>
-          <Routes>
-            {/* authenticated + onboarded users go to homepage */}
-            <Route
-              path='/'
-              element={
-                isLoggedIn && isOnboarded ? (
-                  <HomePage userData={userData} />
-                ) : isLoggedIn && !isOnboarded ? (
-                  <Navigate to='/onboarding' replace />
-                ) : (
-                  <Navigate to='/marketing' replace />
-                )
-              }
-            />
+          {checkingAuth ? (
+            // optional loader/spinner here
+            <Preloader />
+          ) : (
+            <Routes>
+              <Route
+                path='/'
+                element={
+                  isLoggedIn && isOnboarded ? (
+                    <HomePage userData={userData} />
+                  ) : isLoggedIn && !isOnboarded ? (
+                    <Navigate to='/onboarding' replace />
+                  ) : (
+                    <Navigate to='/marketing' replace />
+                  )
+                }
+              />
 
-            {/* marketing page */}
-            <Route
-              path='/marketing'
-              element={
-                <MarketingPage
-                  onLoginClick={openLoginModal}
-                  onRegisterClick={openRegisterModal}
-                  onClose={closeActiveModal}
-                />
-              }
-            />
+              <Route
+                path='/marketing'
+                element={
+                  <MarketingPage
+                    onLoginClick={openLoginModal}
+                    onRegisterClick={openRegisterModal}
+                    onClose={closeActiveModal}
+                  />
+                }
+              />
 
-            {/* onboarding page */}
-            <Route
-              path='/onboarding'
-              element={
-                isLoggedIn ? (
-                  <OnboardingPage />
-                ) : (
-                  <Navigate to='/marketing' replace />
-                )
-              }
-            />
+              <Route
+                path='/onboarding'
+                element={
+                  isLoggedIn ? (
+                    <OnboardingPage />
+                  ) : (
+                    <Navigate to='/marketing' replace />
+                  )
+                }
+              />
 
-            {/* fallback for unknown routes */}
-            <Route
-              path='*'
-              element={
-                isLoggedIn && isOnboarded ? (
-                  <Navigate to='/' replace />
-                ) : (
-                  <Navigate to='/marketing' replace />
-                )
-              }
-            />
-          </Routes>
+              <Route
+                path='*'
+                element={
+                  isLoggedIn && isOnboarded ? (
+                    <Navigate to='/' replace />
+                  ) : (
+                    <Navigate to='/marketing' replace />
+                  )
+                }
+              />
+            </Routes>
+          )}
         </div>
 
         {!isOnboarding && <Footer />}

@@ -161,7 +161,7 @@ export async function fetchSpotByName(name, token) {
 
 // waking up servers
 export async function healthCheck() {
-  const response = await fetch(`${baseUrl.replace('/api', '')}/health`)
+  const response = await fetch(`${baseUrl}/health`)
 
   if (!response.ok) {
     throw new Error('Health check failed')

@@ -2,7 +2,7 @@ import './SurfFeed.css'
 import SurfCard from '../SurfCard/SurfCard'
 import { useEffect, useState } from 'react'
 import { fetchSurfSpots } from '../../utils/api'
-// import Preloader from '../Preloader/Preloader'
+import Preloader from '../Preloader/Preloader'
 import WakingUpModal from '../WakingUpModal/WakingUpModal'
 
 export default function SurfFeed({ backgroundImage }) {
@@ -20,12 +20,13 @@ export default function SurfFeed({ backgroundImage }) {
   // if still checking auth after wake-up
   if (loading) {
     return (
-      <WakingUpModal
-        isOpen={true}
-        // onClose={closeActiveModal}
-        title='🏄 Otto’s checking today’s lineup…'
-        subtitle='Hang tight — surf spots loading now.'
-      />
+      <Preloader />
+      // <WakingUpModal
+      //   isOpen={true}
+      //   // onClose={closeActiveModal}
+      //   title='🏄 Otto’s checking today’s lineup…'
+      //   subtitle='Hang tight — surf spots loading now.'
+      // />
     )
   }
 
