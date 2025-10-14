@@ -6,6 +6,7 @@ export default function Main() {
   return (
     <>
       <main className="hero">
+        <p className="hero__chat">Start chatting today ^^^ </p>
         <h1 className="hero__title">Meet Otto – your personal surf scout!</h1>
 
         <div className="hero__content">

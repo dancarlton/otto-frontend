@@ -15,7 +15,6 @@ import RegisterModal from '../RegisterModal/RegisterModal'
 import MarketingPage from '../../pages/MarketingPage'
 import OnboardingPage from '../../pages/OnboardingPage'
 import CurrentUserContext from '../../contexts/CurrentUserContexts'
-import Preloader from '../Preloader/Preloader'
 
 import { getUser, healthCheck, loginUser, registerUser } from '../../utils/api'
 import HomePage from '../../pages/HomePage'

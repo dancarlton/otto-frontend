@@ -129,7 +129,8 @@
   .header__profile {
     flex-direction: column;
     gap: 0.75rem;
-    padding: 0 1rem;
+    margin-top: 20px;
+    margin-bottom: -30px;
   }
 
   .header__hamburger {
