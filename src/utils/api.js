@@ -159,7 +159,7 @@ export async function fetchSpotByName(name, token) {
   return await response.json()
 }
 
-// waking up render servers
+// waking up servers
 export async function healthCheck() {
   const response = await fetch(`${baseUrl.replace('/api', '')}/health`)
 
